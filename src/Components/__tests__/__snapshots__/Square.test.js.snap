@@ -4,7 +4,7 @@ exports[`This suit is to test the Square component Snapshot of Square 1`] = `
 <DocumentFragment>
   <div
     class="sc-bczRLJ gkhTDj"
-    data-testid="square-container"
+    data-testid="square-0"
   >
     1
   </div>

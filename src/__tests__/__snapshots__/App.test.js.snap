@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`This suit is to test the App component Snapshot of App 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-gsnTZi bXQQWe"
+  >
+    <h1>
+      Tic Tac Toe
+    </h1>
+    <p>
+      The game is played on a 3x3 grid.
+    </p>
+    <p>
+      The game is played by two players.
+    </p>
+    <p>
+      The first player to get three in a row wins.
+    </p>
+    <button
+      class="sc-eCYdqJ isoUnh"
+      data-testid="undo-button"
+    >
+      Undo
+    </button>
+    <p
+      data-testid="winner"
+    >
+      Winner: 
+    </p>
+    <div
+      class="sc-dkzDqf ihhveI"
+    >
+      <div
+        class="sc-bczRLJ gkhTDj"
+        data-testid="square-0"
+      />
+      <div
+        class="sc-bczRLJ gkhTDj"
+        data-testid="square-1"
+      />
+      <div
+        class="sc-bczRLJ gkhTDj"
+        data-testid="square-2"
+      />
+      <div
+        class="sc-bczRLJ gkhTDj"
+        data-testid="square-3"
+      />
+      <div
+        class="sc-bczRLJ gkhTDj"
+        data-testid="square-4"
+      />
+      <div
+        class="sc-bczRLJ gkhTDj"
+        data-testid="square-5"
+      />
+      <div
+        class="sc-bczRLJ gkhTDj"
+        data-testid="square-6"
+      />
+      <div
+        class="sc-bczRLJ gkhTDj"
+        data-testid="square-7"
+      />
+      <div
+        class="sc-bczRLJ gkhTDj"
+        data-testid="square-8"
+      />
+    </div>
+    <button
+      class="sc-hKMtZM jOyafx"
+      data-testid="restart-button"
+    >
+      Play Again?
+    </button>
+    <p>
+      Github: 
+      <a
+        href="https://github.com/kennarddh/tic-tac-toe-react"
+      >
+        Tic Tac Toe React
+      </a>
+    </p>
+  </div>
+</DocumentFragment>
+`;

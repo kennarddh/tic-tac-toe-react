@@ -6,7 +6,7 @@ import userEvent from '@testing-library/user-event'
 
 describe('This suit is to test the Square component', () => {
 	test('Snapshot of Square', () => {
-		const { asFragment } = render(<Square value='1' />)
+		const { asFragment } = render(<Square index="0" value='1' />)
 
 		expect(asFragment()).toMatchSnapshot()
 	})

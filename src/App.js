@@ -104,9 +104,11 @@ const App = () => {
 
 			<p>The first player to get three in a row wins.</p>
 
-			<UndoRedoButton onClick={Undo}>Undo</UndoRedoButton>
+			<UndoRedoButton onClick={Undo} data-testid='undo-button'>
+				Undo
+			</UndoRedoButton>
 
-			<p>Winner: {Winner}</p>
+			<p data-testid='winner'>Winner: {Winner}</p>
 
 			<GameContainer>
 				{Squares.map((square, index) => (
@@ -119,7 +121,11 @@ const App = () => {
 				))}
 			</GameContainer>
 
-			<RestartButton showing={IsCanRestart} onClick={Restart}>
+			<RestartButton
+				showing={IsCanRestart}
+				onClick={Restart}
+				data-testid='restart-button'
+			>
 				Play Again?
 			</RestartButton>
 

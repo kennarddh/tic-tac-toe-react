@@ -4,7 +4,14 @@ import React, { memo } from 'react'
 import { Container } from './Styles'
 
 const Square = ({ value, onClick, index }) => {
-	return <Container onClick={() => onClick(index)} data-testid="square-container">{value}</Container>
+	return (
+		<Container
+			onClick={() => onClick(index)}
+			data-testid={`square-${index}`}
+		>
+			{value}
+		</Container>
+	)
 }
 
 export default memo(Square)
