@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 
 // Components
 import Square from 'Components/Square/Square'
@@ -7,14 +7,27 @@ import Square from 'Components/Square/Square'
 import { Container, GameContainer } from 'Styles'
 
 const App = () => {
-	const [Squares] = useState(Array(9).fill(null))
+	const [Squares, SetSquares] = useState(Array(9).fill(null))
 	const [IsNowX, SetIsNowX] = useState(true)
 
-	const OnClick = index => {
-		Squares[index] = IsNowX ? 'X' : 'O'
+	const OnClick = useCallback(
+		index => {
+			if (Squares[index] !== null) return
 
-		SetIsNowX(!IsNowX)
-	}
+			SetSquares(squares => {
+				const squaresClone = squares.slice()
+
+				squaresClone[index] = IsNowX ? 'X' : 'O'
+
+				return squaresClone
+			})
+
+			SetIsNowX(isNowX => {
+				return !isNowX
+			})
+		},
+		[IsNowX]
+	)
 
 	return (
 		<Container>
