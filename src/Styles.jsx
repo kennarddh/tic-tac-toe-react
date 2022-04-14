@@ -10,6 +10,10 @@ export const Container = styled.div`
 	background-color: #f5f5f5;
 	box-sizing: border-box;
 
+	h1 {
+		margin: 10px 0;
+	}
+
 	p {
 		margin: 5px 0;
 	}
@@ -38,6 +42,25 @@ export const RestartButton = styled.button`
 	color: #333;
 	transition: all 0.2s ease-in-out;
 	visibility: ${props => (props.showing ? 'visible' : 'hidden')};
+
+	&:hover {
+		background-color: #ccc;
+		color: #333;
+	}
+`
+
+export const UndoRedoButton = styled.button`
+	min-width: 100px;
+	height: 30px;
+	background-color: #f5f5f5;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	cursor: pointer;
+	outline: none;
+	font-size: 16px;
+	font-weight: bold;
+	color: #333;
+	transition: all 0.2s ease-in-out;
 
 	&:hover {
 		background-color: #ccc;

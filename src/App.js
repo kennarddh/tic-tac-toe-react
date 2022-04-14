@@ -4,10 +4,16 @@ import React, { useState, useCallback, useEffect } from 'react'
 import Square from 'Components/Square/Square'
 
 // Styles
-import { Container, GameContainer, RestartButton } from 'Styles'
+import {
+	Container,
+	GameContainer,
+	RestartButton,
+	UndoRedoButton,
+} from './Styles'
 
 const App = () => {
 	const [Squares, SetSquares] = useState(Array(9).fill(null))
+	const [History, SetHistory] = useState([])
 	const [IsNowX, SetIsNowX] = useState(true)
 	const [IsCanRestart, SetIsCanRestart] = useState(false)
 	const [Winner, SetWinner] = useState(null)
@@ -28,8 +34,10 @@ const App = () => {
 			SetIsNowX(isNowX => {
 				return !isNowX
 			})
+
+			SetHistory(history => [...history, Squares])
 		},
-		[IsNowX, Winner]
+		[IsNowX, Winner, History]
 	)
 
 	const CalculateWinner = squares => {
@@ -64,7 +72,17 @@ const App = () => {
 		SetIsNowX(true)
 		SetIsCanRestart(false)
 		SetWinner(null)
+		SetHistory([])
 	}, [])
+
+	const Undo = () => {
+		if (Winner) return
+		if (History.length === 0) return
+
+		SetSquares(History[History.length - 1])
+
+		SetHistory(history => history.slice(0, history.length - 1))
+	}
 
 	useEffect(() => {
 		const winner = CalculateWinner(Squares)
@@ -74,7 +92,7 @@ const App = () => {
 		}
 
 		SetWinner(winner)
-	}, [Squares])
+	})
 
 	return (
 		<Container>
@@ -85,6 +103,8 @@ const App = () => {
 			<p>The game is played by two players.</p>
 
 			<p>The first player to get three in a row wins.</p>
+
+			<UndoRedoButton onClick={Undo}>Undo</UndoRedoButton>
 
 			<p>Winner: {Winner}</p>
 
