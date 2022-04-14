@@ -174,4 +174,35 @@ describe('This suit is to test the App component', () => {
 			expect(getByTestId(`square-${i}`)).toHaveTextContent('')
 		}
 	})
+
+	test('Don\'t undo if game finished', () => {
+		const { getByTestId } = render(<App />)
+
+		userEvent.click(getByTestId('square-0'))
+		expect(getByTestId('square-0')).toHaveTextContent('X')
+
+		userEvent.click(getByTestId('square-1'))
+		expect(getByTestId('square-1')).toHaveTextContent('O')
+
+		userEvent.click(getByTestId('square-3'))
+		expect(getByTestId('square-3')).toHaveTextContent('X')
+
+		userEvent.click(getByTestId('square-4'))
+		expect(getByTestId('square-4')).toHaveTextContent('O')
+
+		userEvent.click(getByTestId('square-2'))
+		expect(getByTestId('square-2')).toHaveTextContent('X')
+
+		userEvent.click(getByTestId('square-7'))
+		expect(getByTestId('square-7')).toHaveTextContent('O')
+
+		userEvent.click(getByTestId('undo-button'))
+
+		expect(getByTestId('square-0')).toHaveTextContent('X')
+		expect(getByTestId('square-1')).toHaveTextContent('O')
+		expect(getByTestId('square-3')).toHaveTextContent('X')
+		expect(getByTestId('square-4')).toHaveTextContent('O')
+		expect(getByTestId('square-2')).toHaveTextContent('X')
+		expect(getByTestId('square-7')).toHaveTextContent('O')
+	})
 })
