@@ -1,15 +1,15 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 
 // Components
 import Square from 'Components/Square/Square'
 
 // Styles
-import { Container, GameContainer } from 'Styles'
-import { useEffect } from 'react'
+import { Container, GameContainer, RestartButton } from 'Styles'
 
 const App = () => {
 	const [Squares, SetSquares] = useState(Array(9).fill(null))
 	const [IsNowX, SetIsNowX] = useState(true)
+	const [IsCanRestart, SetIsCanRestart] = useState(false)
 	const [Winner, SetWinner] = useState(null)
 
 	const OnClick = useCallback(
@@ -59,8 +59,19 @@ const App = () => {
 		return null
 	}
 
+	const Restart = useCallback(() => {
+		SetSquares(Array(9).fill(null))
+		SetIsNowX(true)
+		SetIsCanRestart(false)
+		SetWinner(null)
+	}, [])
+
 	useEffect(() => {
 		const winner = CalculateWinner(Squares)
+
+		if (winner) {
+			SetIsCanRestart(true)
+		}
 
 		SetWinner(winner)
 	}, [Squares])
@@ -87,6 +98,10 @@ const App = () => {
 					/>
 				))}
 			</GameContainer>
+
+			{IsCanRestart && (
+				<RestartButton onClick={Restart}>Play Again?</RestartButton>
+			)}
 		</Container>
 	)
 }

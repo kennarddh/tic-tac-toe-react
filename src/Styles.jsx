@@ -23,3 +23,23 @@ export const GameContainer = styled.div`
 	width: 300px;
 	height: 300px;
 `
+
+export const RestartButton = styled.button`
+	margin-top: 20px;
+	min-width: 100px;
+	height: 30px;
+	background-color: #f5f5f5;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	cursor: pointer;
+	outline: none;
+	font-size: 16px;
+	font-weight: bold;
+	color: #333;
+	transition: all 0.2s ease-in-out;
+
+	&:hover {
+		background-color: #ccc;
+		color: #333;
+	}
+`
