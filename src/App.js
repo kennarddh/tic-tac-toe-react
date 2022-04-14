@@ -8,6 +8,13 @@ import { Container, GameContainer } from 'Styles'
 
 const App = () => {
 	const [Squares] = useState(Array(9).fill(null))
+	const [IsNowX, SetIsNowX] = useState(true)
+
+	const OnClick = index => {
+		Squares[index] = IsNowX ? 'X' : 'O'
+
+		SetIsNowX(!IsNowX)
+	}
 
 	return (
 		<Container>
@@ -21,7 +28,12 @@ const App = () => {
 
 			<GameContainer>
 				{Squares.map((square, index) => (
-					<Square key={index} value={square} />
+					<Square
+						key={index}
+						index={index}
+						value={square}
+						onClick={OnClick}
+					/>
 				))}
 			</GameContainer>
 		</Container>

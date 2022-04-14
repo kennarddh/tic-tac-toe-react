@@ -3,8 +3,8 @@ import React from 'react'
 // Styles
 import { Container } from './Styles'
 
-const Square = ({ value }) => {
-	return <Container>{value}</Container>
+const Square = ({ value, onClick, index }) => {
+	return <Container onClick={() => onClick(index)}>{value}</Container>
 }
 
 export default Square
