@@ -37,6 +37,7 @@ export const RestartButton = styled.button`
 	font-weight: bold;
 	color: #333;
 	transition: all 0.2s ease-in-out;
+	visibility: ${props => (props.showing ? 'visible' : 'hidden')};
 
 	&:hover {
 		background-color: #ccc;

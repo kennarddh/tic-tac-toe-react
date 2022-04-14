@@ -99,9 +99,16 @@ const App = () => {
 				))}
 			</GameContainer>
 
-			{IsCanRestart && (
-				<RestartButton onClick={Restart}>Play Again?</RestartButton>
-			)}
+			<RestartButton showing={IsCanRestart} onClick={Restart}>
+				Play Again?
+			</RestartButton>
+
+			<p>
+				Github:{' '}
+				<a href='https://github.com/kennarddh/tic-tac-toe-react'>
+					Tic Tac Toe React
+				</a>
+			</p>
 		</Container>
 	)
 }
