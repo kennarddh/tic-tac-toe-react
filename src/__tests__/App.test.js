@@ -4,6 +4,8 @@ import App from '../App'
 import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
+import 'jest-styled-components'
+
 describe('This suit is to test the App component', () => {
 	test('Snapshot of App', () => {
 		const { asFragment } = render(<App />)
@@ -175,7 +177,7 @@ describe('This suit is to test the App component', () => {
 		}
 	})
 
-	test('Don\'t undo if game finished', () => {
+	test("Don't undo if game finished", () => {
 		const { getByTestId } = render(<App />)
 
 		userEvent.click(getByTestId('square-0'))

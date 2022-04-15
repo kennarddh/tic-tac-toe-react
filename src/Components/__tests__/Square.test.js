@@ -4,9 +4,11 @@ import Square from '../Square/Square'
 import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
+import 'jest-styled-components'
+
 describe('This suit is to test the Square component', () => {
 	test('Snapshot of Square', () => {
-		const { asFragment } = render(<Square index="0" value='1' />)
+		const { asFragment } = render(<Square index='0' value='1' />)
 
 		expect(asFragment()).toMatchSnapshot()
 	})
@@ -28,7 +30,9 @@ describe('This suit is to test the Square component', () => {
 
 	test('Check click event with value', () => {
 		const onClick = jest.fn()
-		const { getByText } = render(<Square value='1' index='1' onClick={onClick} />)
+		const { getByText } = render(
+			<Square value='1' index='1' onClick={onClick} />
+		)
 
 		userEvent.click(getByText('1'))
 
@@ -37,7 +41,9 @@ describe('This suit is to test the Square component', () => {
 
 	test('Check click event with value and index', () => {
 		const onClick = jest.fn()
-		const { getByText } = render(<Square value='1' index='1' onClick={onClick} />)
+		const { getByText } = render(
+			<Square value='1' index='1' onClick={onClick} />
+		)
 
 		userEvent.click(getByText('1'))
 
