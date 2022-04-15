@@ -1,8 +1,7 @@
 {
 	"env": {
 		"browser": true,
-		"es2021": true,
-		"jest/globals": true
+		"es2021": true
 	},
 	"extends": ["eslint:recommended", "plugin:react/recommended"],
 	"parserOptions": {
@@ -16,7 +15,7 @@
 		"react": {
 			"version": "detect"
 		},
-		"jest": { "version": 27 }
+		"jest": { "version": "detect" }
 	},
 	"plugins": ["react", "prettier", "plugin:jest/all"],
 	"rules": {
