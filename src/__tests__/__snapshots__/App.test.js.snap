@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`This suit is to test the App component Snapshot of App 1`] = `
+exports[`this suit is to test the App component snapshot of App 1`] = `
 <DocumentFragment>
   .c4 {
   display: -webkit-box;
