@@ -67,3 +67,7 @@ export const UndoRedoButton = styled.button`
 		color: #333;
 	}
 `
+
+export const WinnerText = styled.p`
+	visibility: ${props => (props.showing ? 'visible' : 'hidden')};
+`

@@ -9,6 +9,7 @@ import {
 	GameContainer,
 	RestartButton,
 	UndoRedoButton,
+	WinnerText,
 } from './Styles'
 
 const App = () => {
@@ -17,11 +18,13 @@ const App = () => {
 	const [IsNowX, SetIsNowX] = useState(true)
 	const [IsCanRestart, SetIsCanRestart] = useState(false)
 	const [Winner, SetWinner] = useState(null)
+	const [IsDraw, SetIsDraw] = useState(false)
 
 	const OnClick = useCallback(
 		index => {
 			if (Squares[index] !== null) return
 			if (Winner) return
+			if (IsDraw) return
 
 			SetSquares(squares => {
 				const squaresClone = squares.slice()
@@ -73,6 +76,7 @@ const App = () => {
 		SetIsCanRestart(false)
 		SetWinner(null)
 		SetHistory([])
+		SetIsDraw(false)
 	}, [])
 
 	const Undo = () => {
@@ -89,10 +93,18 @@ const App = () => {
 
 		if (winner) {
 			SetIsCanRestart(true)
+		} else {
+			const isDraw = Squares.every(square => square !== null)
+
+			if (isDraw) {
+				SetIsCanRestart(true)
+			}
+
+			SetIsDraw(isDraw)
 		}
 
 		SetWinner(winner)
-	})
+	}, [Squares])
 
 	return (
 		<Container>
@@ -108,7 +120,9 @@ const App = () => {
 				Undo
 			</UndoRedoButton>
 
-			<p data-testid='winner'>Winner: {Winner}</p>
+			<WinnerText data-testid='winner' showing={IsDraw || Winner}>
+				{IsDraw ? 'Draw' : `Winner: ${Winner}`}
+			</WinnerText>
 
 			<GameContainer>
 				{Squares.map((square, index) => (
