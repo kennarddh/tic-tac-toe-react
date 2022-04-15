@@ -6,14 +6,20 @@ import userEvent from '@testing-library/user-event'
 
 import 'jest-styled-components'
 
-describe('This suit is to test the App component', () => {
-	test('Snapshot of App', () => {
+describe('this suit is to test the App component', () => {
+	it('snapshot of App', () => {
+		expect.assertions(1)
+
 		const { asFragment } = render(<App />)
+
+		expect.hasAssertions()
 
 		expect(asFragment()).toMatchSnapshot()
 	})
 
-	test('All square rendered with value', () => {
+	it('all square rendered with value', () => {
+		expect.assertions(9)
+
 		const { getByTestId } = render(<App />)
 
 		for (let i = 0; i < 9; i++) {
@@ -21,7 +27,9 @@ describe('This suit is to test the App component', () => {
 		}
 	})
 
-	test('Click on square', () => {
+	it('click on square', () => {
+		expect.assertions(1)
+
 		const { getByTestId } = render(<App />)
 
 		userEvent.click(getByTestId('square-0'))
@@ -29,7 +37,9 @@ describe('This suit is to test the App component', () => {
 		expect(getByTestId('square-0')).toHaveTextContent('X')
 	})
 
-	test('Click on square and check if all square rendered with no value', () => {
+	it('click on square and check if all square rendered with no value', () => {
+		expect.assertions(9)
+
 		const { getByTestId } = render(<App />)
 
 		for (let i = 0; i < 9; i++) {
@@ -37,7 +47,9 @@ describe('This suit is to test the App component', () => {
 		}
 	})
 
-	test('Taking turns and click all square', () => {
+	it('taking turns and click all square', () => {
+		expect.assertions(9)
+
 		const { getByTestId } = render(<App />)
 
 		userEvent.click(getByTestId('square-0'))
@@ -68,7 +80,9 @@ describe('This suit is to test the App component', () => {
 		expect(getByTestId('square-8')).toHaveTextContent('X')
 	})
 
-	test('Check X win', () => {
+	it('check X win', () => {
+		expect.assertions(9)
+
 		const { getByTestId } = render(<App />)
 
 		expect(getByTestId('result')).toHaveTextContent('')
@@ -97,7 +111,9 @@ describe('This suit is to test the App component', () => {
 		expect(getByTestId('result')).toHaveTextContent('Winner: X')
 	})
 
-	test('Check O win', () => {
+	it('check O win', () => {
+		expect.assertions(8)
+
 		const { getByTestId } = render(<App />)
 
 		expect(getByTestId('result')).toHaveTextContent('')
@@ -123,10 +139,12 @@ describe('This suit is to test the App component', () => {
 		expect(getByTestId('result')).toHaveTextContent('Winner: O')
 	})
 
-	test('Check restart game', () => {
+	it('check restart game', () => {
+		expect.assertions(21)
+
 		const { getByTestId } = render(<App />)
 
-		expect(getByTestId('restart-button')).toHaveStyle(`visibility: hidden`)
+		expect(getByTestId('restart-button')).toHaveStyle('visibility: hidden')
 
 		userEvent.click(getByTestId('square-0'))
 		expect(getByTestId('square-0')).toHaveTextContent('X')
@@ -146,24 +164,26 @@ describe('This suit is to test the App component', () => {
 		userEvent.click(getByTestId('square-7'))
 		expect(getByTestId('square-7')).toHaveTextContent('O')
 
-		expect(getByTestId('restart-button')).toHaveStyle(`visibility: visible`)
+		expect(getByTestId('restart-button')).toHaveStyle('visibility: visible')
 
 		userEvent.click(getByTestId('restart-button'))
 
-		expect(getByTestId('restart-button')).toHaveStyle(`visibility: hidden`)
+		expect(getByTestId('restart-button')).toHaveStyle('visibility: hidden')
 
 		for (let i = 0; i < 9; i++) {
 			expect(getByTestId(`square-${i}`)).toHaveTextContent('')
 		}
 
 		expect(getByTestId('result')).toHaveTextContent('')
-		expect(getByTestId('result')).toHaveStyle(`visibility: hidden`)
+		expect(getByTestId('result')).toHaveStyle('visibility: hidden')
 
 		userEvent.click(getByTestId('square-0'))
 		expect(getByTestId('square-0')).toHaveTextContent('X')
 	})
 
-	test('Check undo button', () => {
+	it('check undo button', () => {
+		expect.assertions(19)
+
 		const { getByTestId } = render(<App />)
 
 		userEvent.click(getByTestId('square-0'))
@@ -182,7 +202,9 @@ describe('This suit is to test the App component', () => {
 		}
 	})
 
-	test("Don't undo if game finished", () => {
+	it("don't undo if game finished", () => {
+		expect.assertions(12)
+
 		const { getByTestId } = render(<App />)
 
 		userEvent.click(getByTestId('square-0'))
@@ -213,7 +235,9 @@ describe('This suit is to test the App component', () => {
 		expect(getByTestId('square-7')).toHaveTextContent('O')
 	})
 
-	test('Check draw', () => {
+	it('check draw', () => {
+		expect.assertions(11)
+
 		const { getByTestId } = render(<App />)
 
 		expect(getByTestId('result')).toHaveTextContent('')
@@ -248,7 +272,9 @@ describe('This suit is to test the App component', () => {
 		expect(getByTestId('result')).toHaveTextContent('Draw')
 	})
 
-	test('Check result hidden', () => {
+	it('check result hidden', () => {
+		expect.assertions(12)
+
 		const { getByTestId } = render(<App />)
 
 		expect(getByTestId('result')).toHaveTextContent('')
@@ -281,6 +307,6 @@ describe('This suit is to test the App component', () => {
 		userEvent.click(getByTestId('square-8'))
 		expect(getByTestId('square-8')).toHaveTextContent('X')
 
-		expect(getByTestId('result')).toHaveStyle(`visibility: visible`)
+		expect(getByTestId('result')).toHaveStyle('visibility: visible')
 	})
 })
