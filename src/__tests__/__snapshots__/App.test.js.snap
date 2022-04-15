@@ -2,7 +2,7 @@
 
 exports[`This suit is to test the App component Snapshot of App 1`] = `
 <DocumentFragment>
-  .c3 {
+  .c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -53,7 +53,7 @@ exports[`This suit is to test the App component Snapshot of App 1`] = `
   margin: 5px 0;
 }
 
-.c2 {
+.c3 {
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(3,1fr);
@@ -62,7 +62,7 @@ exports[`This suit is to test the App component Snapshot of App 1`] = `
   height: 300px;
 }
 
-.c4 {
+.c5 {
   margin-top: 20px;
   min-width: 100px;
   height: 30px;
@@ -79,7 +79,7 @@ exports[`This suit is to test the App component Snapshot of App 1`] = `
   visibility: hidden;
 }
 
-.c4:hover {
+.c5:hover {
   background-color: #ccc;
   color: #333;
 }
@@ -104,6 +104,10 @@ exports[`This suit is to test the App component Snapshot of App 1`] = `
   color: #333;
 }
 
+.c2 {
+  visibility: hidden;
+}
+
 <div
     class="c0"
   >
@@ -126,52 +130,51 @@ exports[`This suit is to test the App component Snapshot of App 1`] = `
       Undo
     </button>
     <p
-      data-testid="winner"
-    >
-      Winner: 
-    </p>
-    <div
       class="c2"
+      data-testid="result"
+    />
+    <div
+      class="c3"
     >
       <div
-        class="c3"
+        class="c4"
         data-testid="square-0"
       />
       <div
-        class="c3"
+        class="c4"
         data-testid="square-1"
       />
       <div
-        class="c3"
+        class="c4"
         data-testid="square-2"
       />
       <div
-        class="c3"
+        class="c4"
         data-testid="square-3"
       />
       <div
-        class="c3"
+        class="c4"
         data-testid="square-4"
       />
       <div
-        class="c3"
+        class="c4"
         data-testid="square-5"
       />
       <div
-        class="c3"
+        class="c4"
         data-testid="square-6"
       />
       <div
-        class="c3"
+        class="c4"
         data-testid="square-7"
       />
       <div
-        class="c3"
+        class="c4"
         data-testid="square-8"
       />
     </div>
     <button
-      class="c4"
+      class="c5"
       data-testid="restart-button"
     >
       Play Again?

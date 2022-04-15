@@ -71,6 +71,8 @@ describe('This suit is to test the App component', () => {
 	test('Check X win', () => {
 		const { getByTestId } = render(<App />)
 
+		expect(getByTestId('result')).toHaveTextContent('')
+
 		userEvent.click(getByTestId('square-0'))
 		expect(getByTestId('square-0')).toHaveTextContent('X')
 
@@ -92,11 +94,13 @@ describe('This suit is to test the App component', () => {
 		userEvent.click(getByTestId('square-6'))
 		expect(getByTestId('square-6')).toHaveTextContent('X')
 
-		expect(getByTestId('winner')).toHaveTextContent('Winner: X')
+		expect(getByTestId('result')).toHaveTextContent('Winner: X')
 	})
 
 	test('Check O win', () => {
 		const { getByTestId } = render(<App />)
+
+		expect(getByTestId('result')).toHaveTextContent('')
 
 		userEvent.click(getByTestId('square-0'))
 		expect(getByTestId('square-0')).toHaveTextContent('X')
@@ -116,7 +120,7 @@ describe('This suit is to test the App component', () => {
 		userEvent.click(getByTestId('square-7'))
 		expect(getByTestId('square-7')).toHaveTextContent('O')
 
-		expect(getByTestId('winner')).toHaveTextContent('Winner: O')
+		expect(getByTestId('result')).toHaveTextContent('Winner: O')
 	})
 
 	test('Check restart game', () => {
@@ -152,7 +156,8 @@ describe('This suit is to test the App component', () => {
 			expect(getByTestId(`square-${i}`)).toHaveTextContent('')
 		}
 
-		expect(getByTestId('winner')).toHaveTextContent('Winner:')
+		expect(getByTestId('result')).toHaveTextContent('')
+		expect(getByTestId('result')).toHaveStyle(`visibility: hidden`)
 
 		userEvent.click(getByTestId('square-0'))
 		expect(getByTestId('square-0')).toHaveTextContent('X')
@@ -206,5 +211,76 @@ describe('This suit is to test the App component', () => {
 		expect(getByTestId('square-4')).toHaveTextContent('O')
 		expect(getByTestId('square-2')).toHaveTextContent('X')
 		expect(getByTestId('square-7')).toHaveTextContent('O')
+	})
+
+	test('Check draw', () => {
+		const { getByTestId } = render(<App />)
+
+		expect(getByTestId('result')).toHaveTextContent('')
+
+		userEvent.click(getByTestId('square-0'))
+		expect(getByTestId('square-0')).toHaveTextContent('X')
+
+		userEvent.click(getByTestId('square-1'))
+		expect(getByTestId('square-1')).toHaveTextContent('O')
+
+		userEvent.click(getByTestId('square-2'))
+		expect(getByTestId('square-2')).toHaveTextContent('X')
+
+		userEvent.click(getByTestId('square-4'))
+		expect(getByTestId('square-4')).toHaveTextContent('O')
+
+		userEvent.click(getByTestId('square-3'))
+		expect(getByTestId('square-3')).toHaveTextContent('X')
+
+		userEvent.click(getByTestId('square-5'))
+		expect(getByTestId('square-5')).toHaveTextContent('O')
+
+		userEvent.click(getByTestId('square-7'))
+		expect(getByTestId('square-7')).toHaveTextContent('X')
+
+		userEvent.click(getByTestId('square-6'))
+		expect(getByTestId('square-6')).toHaveTextContent('O')
+
+		userEvent.click(getByTestId('square-8'))
+		expect(getByTestId('square-8')).toHaveTextContent('X')
+
+		expect(getByTestId('result')).toHaveTextContent('Draw')
+	})
+
+	test('Check result hidden', () => {
+		const { getByTestId } = render(<App />)
+
+		expect(getByTestId('result')).toHaveTextContent('')
+		expect(getByTestId('result')).toHaveStyle(`visibility: hidden`)
+
+		userEvent.click(getByTestId('square-0'))
+		expect(getByTestId('square-0')).toHaveTextContent('X')
+
+		userEvent.click(getByTestId('square-1'))
+		expect(getByTestId('square-1')).toHaveTextContent('O')
+
+		userEvent.click(getByTestId('square-2'))
+		expect(getByTestId('square-2')).toHaveTextContent('X')
+
+		userEvent.click(getByTestId('square-4'))
+		expect(getByTestId('square-4')).toHaveTextContent('O')
+
+		userEvent.click(getByTestId('square-3'))
+		expect(getByTestId('square-3')).toHaveTextContent('X')
+
+		userEvent.click(getByTestId('square-5'))
+		expect(getByTestId('square-5')).toHaveTextContent('O')
+
+		userEvent.click(getByTestId('square-7'))
+		expect(getByTestId('square-7')).toHaveTextContent('X')
+
+		userEvent.click(getByTestId('square-6'))
+		expect(getByTestId('square-6')).toHaveTextContent('O')
+
+		userEvent.click(getByTestId('square-8'))
+		expect(getByTestId('square-8')).toHaveTextContent('X')
+
+		expect(getByTestId('result')).toHaveStyle(`visibility: visible`)
 	})
 })

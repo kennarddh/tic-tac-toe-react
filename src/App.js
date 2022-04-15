@@ -120,8 +120,8 @@ const App = () => {
 				Undo
 			</UndoRedoButton>
 
-			<WinnerText data-testid='winner' showing={IsDraw || Winner}>
-				{IsDraw ? 'Draw' : `Winner: ${Winner}`}
+			<WinnerText data-testid='result' showing={IsDraw || Winner}>
+				{IsDraw ? 'Draw' : Winner ? `Winner: ${Winner}` : ''}
 			</WinnerText>
 
 			<GameContainer>
