@@ -1,9 +1,14 @@
 {
 	"env": {
 		"browser": true,
-		"es2021": true
+		"es2021": true,
+		"jest/globals": true
 	},
-	"extends": ["eslint:recommended", "plugin:react/recommended"],
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"plugin:jest/all"
+	],
 	"parserOptions": {
 		"ecmaFeatures": {
 			"jsx": true
@@ -17,7 +22,7 @@
 		},
 		"jest": { "version": "detect" }
 	},
-	"plugins": ["react", "prettier", "plugin:jest/all"],
+	"plugins": ["react", "prettier", "jest"],
 	"rules": {
 		"prettier/prettier": [
 			"warn",
