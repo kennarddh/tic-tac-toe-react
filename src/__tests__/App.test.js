@@ -202,6 +202,55 @@ describe('this suit is to test the App component', () => {
 		}
 	})
 
+	it("don't undo if game draw", () => {
+		expect.assertions(20)
+
+		const { getByTestId } = render(<App />)
+
+		expect(getByTestId('result')).toHaveTextContent('')
+
+		userEvent.click(getByTestId('square-0'))
+		expect(getByTestId('square-0')).toHaveTextContent('X')
+
+		userEvent.click(getByTestId('square-1'))
+		expect(getByTestId('square-1')).toHaveTextContent('O')
+
+		userEvent.click(getByTestId('square-2'))
+		expect(getByTestId('square-2')).toHaveTextContent('X')
+
+		userEvent.click(getByTestId('square-4'))
+		expect(getByTestId('square-4')).toHaveTextContent('O')
+
+		userEvent.click(getByTestId('square-3'))
+		expect(getByTestId('square-3')).toHaveTextContent('X')
+
+		userEvent.click(getByTestId('square-5'))
+		expect(getByTestId('square-5')).toHaveTextContent('O')
+
+		userEvent.click(getByTestId('square-7'))
+		expect(getByTestId('square-7')).toHaveTextContent('X')
+
+		userEvent.click(getByTestId('square-6'))
+		expect(getByTestId('square-6')).toHaveTextContent('O')
+
+		userEvent.click(getByTestId('square-8'))
+		expect(getByTestId('square-8')).toHaveTextContent('X')
+
+		expect(getByTestId('result')).toHaveTextContent('Draw')
+
+		userEvent.click(getByTestId('undo-button'))
+
+		expect(getByTestId('square-0')).toHaveTextContent('X')
+		expect(getByTestId('square-1')).toHaveTextContent('O')
+		expect(getByTestId('square-2')).toHaveTextContent('X')
+		expect(getByTestId('square-3')).toHaveTextContent('X')
+		expect(getByTestId('square-4')).toHaveTextContent('O')
+		expect(getByTestId('square-5')).toHaveTextContent('O')
+		expect(getByTestId('square-6')).toHaveTextContent('O')
+		expect(getByTestId('square-7')).toHaveTextContent('X')
+		expect(getByTestId('square-8')).toHaveTextContent('X')
+	})
+
 	it("don't undo if game finished", () => {
 		expect.assertions(12)
 
