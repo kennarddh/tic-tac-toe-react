@@ -81,6 +81,7 @@ const App = () => {
 
 	const Undo = () => {
 		if (Winner) return
+		if (IsDraw) return
 		if (History.length === 0) return
 
 		SetSquares(History[History.length - 1])
